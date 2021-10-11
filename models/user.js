@@ -1,5 +1,4 @@
 "use strict";
-
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
@@ -9,24 +8,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      user.hasOne(models.space);
+      // define association here
     }
   }
   user.init(
     {
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      email: { type: DataTypes.STRING, allowNull: false },
+      password: { type: DataTypes.STRING, allowNull: false },
+      name: { type: DataTypes.STRING, allowNull: true },
+      birthday: { type: DataTypes.STRING, allowNull: true },
+      street: { type: DataTypes.STRING, allowNull: true },
+      number: { type: DataTypes.INTEGER, allowNull: true },
+      city: { type: DataTypes.STRING, allowNull: true },
+      postcode: { type: DataTypes.STRING, allowNull: true },
+      country: { type: DataTypes.STRING, allowNull: true },
+      image: { type: DataTypes.STRING, allowNull: true },
+      instagram: { type: DataTypes.STRING, allowNull: true },
     },
     {
       sequelize,
