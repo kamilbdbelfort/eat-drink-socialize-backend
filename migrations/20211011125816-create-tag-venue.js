@@ -1,18 +1,24 @@
-// migrations/create-tag.js
+// migrations/create-tag-venue.js
 
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("tags", {
-      id: {
+    await queryInterface.createTable("tag_venues", {
+      tagId: {
         allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
         type: Sequelize.INTEGER,
+        references: {
+          model: "tags",
+          key: "id",
+        },
       },
-      name: {
+      venueId: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "venues",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("tags");
+    await queryInterface.dropTable("tag_venues");
   },
 };

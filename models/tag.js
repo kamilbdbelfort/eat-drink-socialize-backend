@@ -1,3 +1,5 @@
+// models/tag.js
+
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -9,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      tag.hasMany(models.tag_venue);
     }
   }
   tag.init(

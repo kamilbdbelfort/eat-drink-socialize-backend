@@ -1,3 +1,5 @@
+// models/user_venue.js
+
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -9,14 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      user_venue.belongsTo(models.user);
+      user_venue.belongsTo(models.venue);
     }
   }
   user_venue.init(
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       venueId: { type: DataTypes.INTEGER, allowNull: false },
-      like: DataTypes.BOOLEAN,
-      saved: DataTypes.BOOLEAN,
+      like: { type: DataTypes.BOOLEAN, allowNull: true },
+      saved: { type: DataTypes.BOOLEAN, allowNull: true },
     },
     {
       sequelize,

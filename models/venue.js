@@ -1,3 +1,5 @@
+// models/venue.js
+
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -9,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      venue.hasMany(models.review);
+      venue.hasMany(models.user_venue);
+      venue.hasMany(models.tag_venue);
     }
   }
   venue.init(

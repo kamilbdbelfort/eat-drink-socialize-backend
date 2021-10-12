@@ -1,3 +1,5 @@
+// migrations/create-review.js
+
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -21,10 +23,6 @@ module.exports = {
         type: Sequelize.STRING,
       },
       rating: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-      },
-      venueId: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },

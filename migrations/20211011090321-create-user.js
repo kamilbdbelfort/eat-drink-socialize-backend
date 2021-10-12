@@ -1,3 +1,5 @@
+// migrations/create-user.js
+
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -17,7 +19,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       name: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.STRING,
       },
       birthday: {

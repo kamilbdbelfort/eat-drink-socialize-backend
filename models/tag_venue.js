@@ -1,7 +1,7 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+// models/tag_venue.js
+
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class tag_venue extends Model {
     /**
@@ -11,14 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      tag_venue.belongsTo(models.tag);
+      tag_venue.belongsTo(models.venue);
     }
-  };
-  tag_venue.init({
-    tagId: DataTypes.INTEGER,
-    venueId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'tag_venue',
-  });
+  }
+  tag_venue.init(
+    {
+      tagId: { type: DataTypes.INTEGER, allowNull: false },
+      venueId: { type: DataTypes.INTEGER, allowNull: false },
+    },
+    {
+      sequelize,
+      modelName: "tag_venue",
+    }
+  );
   return tag_venue;
 };

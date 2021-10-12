@@ -1,34 +1,33 @@
-// seeders/some-tags.js
+// seeders/some-user-venues.js
 
 "use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "tags",
+      "user_venues",
       [
         {
-          name: "Cocktails",
+          userId: 1,
+          venueId: 1,
+          like: true,
+          saved: false,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Jazz",
+          userId: 1,
+          venueId: 2,
+          like: true,
+          saved: true,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "Oldenhof",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: "whisky",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          name: "cocktailbar",
+          userId: 1,
+          venueId: 3,
+          like: true,
+          saved: true,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -38,6 +37,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("tags", null, {});
+    await queryInterface.bulkDelete("user_venues", null, {});
   },
 };

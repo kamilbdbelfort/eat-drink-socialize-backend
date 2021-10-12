@@ -1,3 +1,5 @@
+// migrations/create-venue.js
+
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {

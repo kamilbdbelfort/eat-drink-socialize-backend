@@ -1,3 +1,5 @@
+// models/review.js
+
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -9,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      review.belongsTo(models.user);
+      review.belongsTo(models.venue);
     }
   }
   review.init(

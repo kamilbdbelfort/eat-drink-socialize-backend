@@ -1,20 +1,24 @@
+// migrations/create-user-venue.js
+
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("user_venues", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       venueId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: {
+          model: "venues",
+          key: "id",
+        },
       },
       like: {
         type: Sequelize.BOOLEAN,

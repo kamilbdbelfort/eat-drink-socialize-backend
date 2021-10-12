@@ -1,3 +1,5 @@
+// models/user.js
+
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -9,13 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      user.hasMany(models.review);
+      user.hasMany(models.user_venue);
     }
   }
   user.init(
     {
       email: { type: DataTypes.STRING, allowNull: false },
       password: { type: DataTypes.STRING, allowNull: false },
-      name: { type: DataTypes.STRING, allowNull: true },
+      name: { type: DataTypes.STRING, allowNull: false },
       birthday: { type: DataTypes.STRING, allowNull: true },
       street: { type: DataTypes.STRING, allowNull: true },
       number: { type: DataTypes.INTEGER, allowNull: true },

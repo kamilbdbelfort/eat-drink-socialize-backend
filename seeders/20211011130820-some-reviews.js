@@ -1,3 +1,5 @@
+// seeders/some-reviews.js
+
 "use strict";
 const bcrypt = require("bcrypt");
 const { SALT_ROUNDS } = require("../config/constants");
@@ -15,6 +17,8 @@ module.exports = {
           rating: 5,
           userId: 1,
           venueId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}
