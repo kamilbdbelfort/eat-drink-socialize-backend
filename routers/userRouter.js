@@ -6,6 +6,8 @@ const router = new Router();
 const authMiddleWare = require("../auth/middleware");
 
 const User = require("../models").user;
+const User_place = require("../models/").user_place;
+const Review = require("../models/").review;
 
 // GET all users
 router.get("/", authMiddleWare, async (req, res, next) => {
@@ -17,7 +19,7 @@ router.get("/", authMiddleWare, async (req, res, next) => {
   }
 });
 
-// GET user by id
+// GET user by id and all his related info
 router.get("/:userId", async (req, res, next) => {
   const userId = req.params.userId;
   if (!userId) {
@@ -25,8 +27,10 @@ router.get("/:userId", async (req, res, next) => {
   }
 
   try {
-    const user = await User.findByPk(userId);
-    res.status(200).send(user.name);
+    const user = await User.findByPk(userId, {
+      include: [Review, User_place],
+    });
+    res.status(200).send(user);
   } catch (e) {
     next(e.message);
   }

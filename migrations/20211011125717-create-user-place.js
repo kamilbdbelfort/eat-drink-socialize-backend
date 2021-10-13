@@ -1,9 +1,15 @@
-// migrations/create-user-venue.js
+// migrations/create-user-place.js
 
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("user_venues", {
+    await queryInterface.createTable("user_places", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
@@ -12,11 +18,11 @@ module.exports = {
           key: "id",
         },
       },
-      venueId: {
+      placeId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "venues",
+          model: "places",
           key: "id",
         },
       },
@@ -37,6 +43,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("user_venues");
+    await queryInterface.dropTable("user_places");
   },
 };

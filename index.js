@@ -20,11 +20,11 @@ const authMiddleWare = require("./auth/middleware");
 
 const ReviewRouter = require("./routers/reviewRouter");
 const UserRouter = require("./routers/userRouter");
-const venueRouter = require("./routers/venueRouter");
+const PlaceRouter = require("./routers/placeRouter");
 const authRouter = require("./routers/auth");
 
 app.use("/", authRouter);
-app.use("/venues", venueRouter);
+app.use("/places", PlaceRouter);
 app.use("/reviews", ReviewRouter);
 app.use("/users", UserRouter);
 

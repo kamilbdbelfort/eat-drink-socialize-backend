@@ -1,9 +1,9 @@
-// models/tag_venue.js
+// models/tag_place.js
 
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class tag_venue extends Model {
+  class tag_place extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,19 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      tag_venue.belongsTo(models.tag);
-      tag_venue.belongsTo(models.venue);
+      tag_place.belongsTo(models.tag);
+      tag_place.belongsTo(models.place);
     }
   }
-  tag_venue.init(
+  tag_place.init(
     {
       tagId: { type: DataTypes.INTEGER, allowNull: false },
-      venueId: { type: DataTypes.INTEGER, allowNull: false },
+      placeId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,
-      modelName: "tag_venue",
+      modelName: "tag_place",
     }
   );
-  return tag_venue;
+  return tag_place;
 };

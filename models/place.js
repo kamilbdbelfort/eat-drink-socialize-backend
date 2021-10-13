@@ -1,9 +1,9 @@
-// models/venue.js
+// models/place.js
 
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class venue extends Model {
+  class place extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      venue.hasMany(models.review);
-      venue.hasMany(models.user_venue);
-      venue.hasMany(models.tag_venue);
+      place.hasMany(models.review);
+      place.hasMany(models.user_place);
+      place.hasMany(models.tag_place);
     }
   }
-  venue.init(
+  place.init(
     {
       name: { type: DataTypes.STRING, allowNull: false },
       street: { type: DataTypes.STRING, allowNull: false },
@@ -28,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "venue",
+      modelName: "place",
     }
   );
-  return venue;
+  return place;
 };

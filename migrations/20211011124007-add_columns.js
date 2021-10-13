@@ -13,11 +13,11 @@ module.exports = {
           key: "id",
         },
       }),
-      queryInterface.addColumn("reviews", "venueId", {
+      queryInterface.addColumn("reviews", "placeId", {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "venues",
+          model: "places",
           key: "id",
         },
       }),
@@ -27,7 +27,7 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     return Promise.all([
       queryInterface.removeColumn("reviews", "userId"),
-      queryInterface.removeColumn("reviews", "venueId"),
+      queryInterface.removeColumn("reviews", "placeId"),
     ]);
   },
 };

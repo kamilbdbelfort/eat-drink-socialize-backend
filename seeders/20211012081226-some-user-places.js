@@ -1,15 +1,15 @@
-// seeders/some-user-venues.js
+// seeders/some-user-places.js
 
 "use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "user_venues",
+      "user_places",
       [
         {
           userId: 1,
-          venueId: 1,
+          placeId: 1,
           like: true,
           saved: false,
           createdAt: new Date(),
@@ -17,7 +17,7 @@ module.exports = {
         },
         {
           userId: 1,
-          venueId: 2,
+          placeId: 2,
           like: true,
           saved: true,
           createdAt: new Date(),
@@ -25,7 +25,7 @@ module.exports = {
         },
         {
           userId: 1,
-          venueId: 3,
+          placeId: 3,
           like: true,
           saved: true,
           createdAt: new Date(),
@@ -37,6 +37,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("user_venues", null, {});
+    await queryInterface.bulkDelete("user_places", null, {});
   },
 };

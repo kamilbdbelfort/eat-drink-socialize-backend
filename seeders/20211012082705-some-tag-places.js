@@ -1,63 +1,63 @@
-// seeders/some-tag-venues.js
+// seeders/some-tag-places.js
 
 "use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "tag_venues",
+      "tag_places",
       [
         {
           tagId: 1,
-          venueId: 1,
+          placeId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 2,
-          venueId: 1,
+          placeId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 3,
-          venueId: 1,
+          placeId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 4,
-          venueId: 1,
+          placeId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 5,
-          venueId: 1,
+          placeId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 1,
-          venueId: 2,
+          placeId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 1,
-          venueId: 3,
+          placeId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 5,
-          venueId: 2,
+          placeId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           tagId: 5,
-          venueId: 3,
+          placeId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -67,6 +67,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("tag_venues", null, {});
+    await queryInterface.bulkDelete("tag_places", null, {});
   },
 };

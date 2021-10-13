@@ -3,10 +3,11 @@
 const bcrypt = require("bcrypt");
 const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
+
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
+const User_place = require("../models/").user_place;
 const Review = require("../models/").review;
-const User_venue = require("../models/").user_venue;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -29,7 +30,7 @@ router.post("/login", async (req, res, next) => {
 
     const user = await User.findOne({
       where: { email },
-      include: [Review],
+      include: [Review, User_place],
     });
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
@@ -92,15 +93,18 @@ router.post("/signup", async (req, res) => {
 // The /me endpoint can be used to:
 // - get the users email & name using only their token
 // - checking if a token is (still) valid
-// router.get("/me", authMiddleware, async (req, res) => {
-//   const space = await Space.findOne({
-//     where: { userId: req.user.id },
-//     include: [Story],
-//     order: [[Story, "createdAt", "DESC"]],
-//   });
-//   // don't send back the password hash
-//   delete req.user.dataValues["password"];
-//   res.status(200).send({ ...req.user.dataValues, space });
-// });
+router.get("/me", authMiddleware, async (req, res) => {
+  const user = await User.findOne({
+    where: { userId: req.user.id },
+    include: [Review, User_place],
+    order: [
+      [Review, "createdAt", "DESC"],
+      [User_place, "createdAt", "DESC"],
+    ],
+  });
+  // don't send back the password hash
+  delete req.user.dataValues["password"];
+  res.status(200).send({ ...req.user.dataValues, space });
+});
 
 module.exports = router;

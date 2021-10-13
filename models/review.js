@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       review.belongsTo(models.user);
-      review.belongsTo(models.venue);
+      review.belongsTo(models.place);
     }
   }
   review.init(
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       image: { type: DataTypes.STRING, allowNull: true },
       rating: { type: DataTypes.INTEGER, allowNull: false },
       userId: { type: DataTypes.INTEGER, allowNull: false },
-      venueId: { type: DataTypes.INTEGER, allowNull: false },
+      placeId: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,

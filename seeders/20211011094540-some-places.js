@@ -1,4 +1,4 @@
-// seeders/some-venues.js
+// seeders/some-places.js
 
 "use strict";
 const bcrypt = require("bcrypt");
@@ -7,7 +7,7 @@ const { SALT_ROUNDS } = require("../config/constants");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "venues",
+      "places",
       [
         {
           name: "Bar Oldenhof",
@@ -51,6 +51,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("venues", null, {});
+    await queryInterface.bulkDelete("places", null, {});
   },
 };
