@@ -8,6 +8,7 @@ const authMiddleWare = require("../auth/middleware");
 const User = require("../models").user;
 const User_place = require("../models/").user_place;
 const Review = require("../models/").review;
+const Place = require("../models/").place;
 
 // GET all users
 router.get("/", authMiddleWare, async (req, res, next) => {
@@ -28,7 +29,10 @@ router.get("/:userId", async (req, res, next) => {
 
   try {
     const user = await User.findByPk(userId, {
-      include: [Review, User_place],
+      include: [
+        { model: Review },
+        { model: Place, through: { attributes: ["like", "saved"] } },
+      ],
     });
     res.status(200).send(user);
   } catch (e) {

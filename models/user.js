@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       user.hasMany(models.review);
-      user.hasMany(models.user_place);
+      user.belongsToMany(models.place, {
+        through: "user_places",
+        foreignKey: "userId",
+      });
     }
   }
   user.init(
