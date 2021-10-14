@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      tag.hasMany(models.tag_place);
+      tag.belongsToMany(models.place, {
+        through: "tag_places",
+        foreignKey: "tagId",
+      });
     }
   }
   tag.init(

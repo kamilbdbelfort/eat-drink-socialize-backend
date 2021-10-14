@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         through: "user_places",
         foreignKey: "placeId",
       });
-      place.hasMany(models.tag_place);
+      place.belongsToMany(models.tag, {
+        through: "tag_places",
+        foreignKey: "placeId",
+      });
     }
   }
   place.init(
