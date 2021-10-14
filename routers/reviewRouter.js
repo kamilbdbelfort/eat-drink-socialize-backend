@@ -29,4 +29,59 @@ router.get("/user/:userId", async (req, res, next) => {
   }
 });
 
+// POST a new review of a place
+router.post("/", async (req, res, next) => {
+  const { title, comment, image, rating, userId, placeId } = req.body;
+  if (!title || !comment || !rating || !userId || !placeId) {
+    if (!title) {
+      return res.status(400).send({ message: "Please provide title" });
+    }
+    if (!comment) {
+      return res.status(400).send({ message: "Please provide comment" });
+    }
+    if (!rating) {
+      return res.status(400).send({ message: "Please add rating" });
+    }
+    if (!userId) {
+      return res.status(400).send({ message: "Unknown user id" });
+    }
+    if (!placeId) {
+      return res.status(400).send({ message: "Unknown place id" });
+    }
+  }
+
+  try {
+    const newReview = await Review.create({
+      title,
+      comment,
+      image,
+      rating,
+      userId,
+      placeId,
+    });
+
+    res.status(201).send("New review is placed!");
+  } catch (e) {
+    next(e.message);
+  }
+});
+
+// DELETE a review
+router.delete("/:id", async (req, res, next) => {
+  const reviewId = parseInt(req.params.id);
+  try {
+    const review = await Review.findByPk(reviewId);
+    console.log("review", review);
+
+    if (!review) {
+      res.status(400).send(`No review with id of ${reviewId} has been found`);
+    } else {
+      review.destroy();
+      res.status(200).send("Review has been deleted.");
+    }
+  } catch (e) {
+    next(e.message);
+  }
+});
+
 module.exports = router;

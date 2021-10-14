@@ -40,4 +40,51 @@ router.get("/:userId", async (req, res, next) => {
   }
 });
 
+// POST a new saved or like user_venue
+router.post("/user_place", async (req, res, next) => {
+  const { userId, placeId, like, saved } = req.body;
+
+  if (!userId || !placeId) {
+    return res
+      .status(400)
+      .send({ message: "Please provide user & place ID's" });
+  }
+  if (!like && !saved) {
+    return res
+      .status(400)
+      .send({ message: "Please provide a like or save the place" });
+  }
+  try {
+    const newUserPlace = await User_place.create({
+      userId,
+      placeId,
+      like,
+      saved,
+    });
+    res.status(201).send("New place is added to a user's list!");
+  } catch (e) {
+    next(e.message);
+  }
+});
+
+// DELETE a place from a user's list
+router.delete("/user_place/:id", async (req, res, next) => {
+  const userPlaceId = parseInt(req.params.id);
+  try {
+    const userPlace = await User_place.findByPk(userPlaceId);
+    console.log("review", userPlace);
+
+    if (!userPlace) {
+      res
+        .status(400)
+        .send(`No review with id of ${userPlaceId} has been found`);
+    } else {
+      userPlace.destroy();
+      res.status(200).send("Review has been deleted.");
+    }
+  } catch (e) {
+    next(e.message);
+  }
+});
+
 module.exports = router;
