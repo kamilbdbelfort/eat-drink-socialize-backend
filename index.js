@@ -21,12 +21,14 @@ const authMiddleWare = require("./auth/middleware");
 const ReviewRouter = require("./routers/reviewRouter");
 const UserRouter = require("./routers/userRouter");
 const PlaceRouter = require("./routers/placeRouter");
+const TagRouter = require("./routers/tagRouter");
 const authRouter = require("./routers/auth");
 
 app.use("/", authRouter);
 app.use("/places", PlaceRouter);
 app.use("/reviews", ReviewRouter);
 app.use("/users", UserRouter);
+app.use("/tags", TagRouter);
 
 // GET endpoint for testing purposes, can be removed
 app.get("/", (req, res) => {

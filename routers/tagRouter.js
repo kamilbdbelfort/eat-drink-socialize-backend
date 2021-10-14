@@ -6,6 +6,7 @@ const router = new Router();
 const authMiddleWare = require("../auth/middleware");
 
 const Tag = require("../models").tag;
+const Place = require("../models").place;
 
 // GET all tags
 router.get("/", async (req, res, next) => {
@@ -22,7 +23,9 @@ router.get("/:id", async (req, res, next) => {
   const tagId = parseInt(req.params.id);
   if (!tagId) return res.status(404).json({ message: "Uknown place ID" });
   try {
-    const tag = await Tag.findByPk(tagId);
+    const tag = await Tag.findByPk(tagId, {
+      include: [{ model: Place, through: { attributes: [] } }],
+    });
     res.status(200).send(tag);
   } catch (e) {
     next(e.message);
@@ -66,3 +69,5 @@ router.delete("/:id", async (req, res, next) => {
     next(e.message);
   }
 });
+
+module.exports = router;

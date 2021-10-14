@@ -4,7 +4,7 @@ const { Router } = require("express");
 const router = new Router();
 
 const Place = require("../models").place;
-const User_place = require("../models").user_place;
+const Tag = require("../models").tag;
 
 // GET all places
 router.get("/", async (req, res, next) => {
@@ -21,7 +21,9 @@ router.get("/:id", async (req, res, next) => {
   const placeId = parseInt(req.params.id);
   if (!placeId) return res.status(404).json({ message: "Uknown place ID" });
   try {
-    const place = await Place.findByPk(placeId);
+    const place = await Place.findByPk(placeId, {
+      include: [{ model: Review }, { model: Tag, through: { attributes: [] } }],
+    });
     res.status(200).send(place);
   } catch (e) {
     next(e.message);
