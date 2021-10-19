@@ -45,6 +45,18 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "Bar TwentySeven",
+          street: "Dam",
+          number: 27,
+          city: "Amsterdam",
+          postcode: "1012JS",
+          country: "Netherlands",
+          image:
+            "https://www.satelliet.net/fileadmin/_processed_/csm_Nieuws_Hotel-TwentySeven_compr_9f544d6ed6.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

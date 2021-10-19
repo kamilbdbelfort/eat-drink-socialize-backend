@@ -66,6 +66,22 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// GET all reviews of a place
+router.get("/place/:id", async (req, res, next) => {
+  const placeId = parseInt(req.params.id);
+  if (!placeId) {
+    return res.status(400).send("Place ID not found!");
+  }
+  try {
+    const reviews = await Review.findAll({
+      where: { placeId: placeId },
+    });
+    res.send(reviews);
+  } catch (e) {
+    next(e.message);
+  }
+});
+
 // DELETE a review
 router.delete("/:id", async (req, res, next) => {
   const reviewId = parseInt(req.params.id);

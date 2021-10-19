@@ -40,8 +40,74 @@ router.get("/:userId", async (req, res, next) => {
   }
 });
 
-// POST a new saved or like user_venue
-router.post("/user_place", async (req, res, next) => {
+// GET user user_place status
+router.get("/user_place/:userId/:placeId", async (req, res, next) => {
+  const userId = parseInt(req.params.userId);
+  const placeId = parseInt(req.params.placeId);
+
+  try {
+    const user_place = await User_place.findAll({
+      where: { userId: userId },
+      where: { placeId: placeId },
+    });
+    res.status(200).send(user_place);
+  } catch (e) {
+    next(e.message);
+  }
+});
+
+// PATCH a new like user_place
+router.patch("/user_place/:userId/:placeId/like", async (req, res, next) => {
+  const userId = parseInt(req.params.userId);
+  const placeId = parseInt(req.params.placeId);
+  try {
+    const userPlace = await User_place.findOne({
+      where: { userId: userId },
+      where: { placeId: placeId },
+    });
+    if (!userPlace) {
+      return res.status(404).json({ message: "Uknown user_place" });
+    }
+
+    if (userPlace.like) {
+      await userPlace.update({ like: false });
+    } else if (!userPlace.like) {
+      await userPlace.update({ like: true });
+    }
+
+    res.json(userPlace);
+  } catch (e) {
+    next(e.message);
+  }
+});
+
+// PATCH a new saved user_place
+router.patch("/user_place/:userId/:placeId/saved", async (req, res, next) => {
+  const userId = parseInt(req.params.userId);
+  const placeId = parseInt(req.params.placeId);
+  try {
+    const userPlace = await User_place.findOne({
+      where: { userId: userId },
+      where: { placeId: placeId },
+    });
+    if (!userPlace) {
+      return res.status(404).json({ message: "Uknown user_place" });
+    }
+
+    if (userPlace.saved) {
+      await userPlace.update({ saved: false });
+    } else if (!userPlace.saved) {
+      await userPlace.update({ saved: true });
+    }
+
+    res.json(userPlace);
+  } catch (e) {
+    next(e.message);
+  }
+});
+
+// POST add like user_place
+router.post("/user_place/newLike", async (req, res, next) => {
   const { userId, placeId, like, saved } = req.body;
 
   if (!userId || !placeId) {
@@ -49,10 +115,33 @@ router.post("/user_place", async (req, res, next) => {
       .status(400)
       .send({ message: "Please provide user & place ID's" });
   }
-  if (!like && !saved) {
+  if (!like) {
+    return res.status(400).send({ message: "Please add a like to the place" });
+  }
+  try {
+    const newUserPlace = await User_place.create({
+      userId,
+      placeId,
+      like,
+      saved,
+    });
+    res.status(201).send("New place is added to a user's list!");
+  } catch (e) {
+    next(e.message);
+  }
+});
+
+// POST add saved user_place
+router.post("/user_place/newSaved", async (req, res, next) => {
+  const { userId, placeId, like, saved } = req.body;
+
+  if (!userId || !placeId) {
     return res
       .status(400)
-      .send({ message: "Please provide a like or save the place" });
+      .send({ message: "Please provide user & place ID's" });
+  }
+  if (!like) {
+    return res.status(400).send({ message: "Please add a like to the place" });
   }
   try {
     const newUserPlace = await User_place.create({

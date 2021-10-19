@@ -4,12 +4,39 @@ const { Router } = require("express");
 const router = new Router();
 
 const Place = require("../models").place;
+const Review = require("../models").review;
+const User = require("../models").user;
 const Tag = require("../models").tag;
 
 // GET all places
 router.get("/", async (req, res, next) => {
   try {
-    const places = await Place.findAll();
+    const places = await Place.findAll({
+      include: [
+        { model: Review },
+        { model: Tag, through: { attributes: [] } },
+        { model: User, through: { attributes: ["like", "saved"] } },
+      ],
+    });
+    res.status(200).send(places);
+  } catch (e) {
+    next(e.message);
+  }
+});
+
+// GET all places of a user
+router.get("/user/:userId", async (req, res, next) => {
+  const userId = parseInt(req.params.userId);
+  try {
+    const places = await Place.findAll({
+      include: [
+        {
+          model: User,
+          through: { attributes: ["like", "saved"] },
+          where: { id: userId },
+        },
+      ],
+    });
     res.status(200).send(places);
   } catch (e) {
     next(e.message);
@@ -22,7 +49,11 @@ router.get("/:id", async (req, res, next) => {
   if (!placeId) return res.status(404).json({ message: "Uknown place ID" });
   try {
     const place = await Place.findByPk(placeId, {
-      include: [{ model: Review }, { model: Tag, through: { attributes: [] } }],
+      include: [
+        { model: Review },
+        { model: Tag, through: { attributes: [] } },
+        { model: User, through: { attributes: ["like", "saved"] } },
+      ],
     });
     res.status(200).send(place);
   } catch (e) {

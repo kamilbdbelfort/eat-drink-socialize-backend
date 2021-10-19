@@ -41,7 +41,7 @@ module.exports = {
             "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/0d46b3a9f11326b46797136696093809.jpg?crop=0.941xw:1.00xh;0.0309xw,0&resize=640:*",
           rating: 5,
           userId: 1,
-          placeId: 2,
+          placeId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
