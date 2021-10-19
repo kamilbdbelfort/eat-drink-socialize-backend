@@ -5,14 +5,14 @@ const app = express();
 
 // Middlewares
 
+const corsMiddleWare = require("cors");
+app.use(corsMiddleWare());
+
 const loggerMiddleWare = require("morgan");
 app.use(loggerMiddleWare("dev"));
 
 const bodyParserMiddleWare = express.json();
 app.use(bodyParserMiddleWare);
-
-const corsMiddleWare = require("cors");
-app.use(corsMiddleWare());
 
 const authMiddleWare = require("./auth/middleware");
 
