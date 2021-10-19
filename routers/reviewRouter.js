@@ -4,11 +4,15 @@ const { Router } = require("express");
 const router = new Router();
 
 const Review = require("../models").review;
+const User = require("../models").user;
+const Place = require("../models").place;
 
 // GET all reviews
 router.get("/", async (req, res, next) => {
   try {
-    const reviews = await Review.findAll();
+    const reviews = await Review.findAll({
+      include: [User, Place],
+    });
     res.status(200).send(reviews);
   } catch (e) {
     next(e.message);
