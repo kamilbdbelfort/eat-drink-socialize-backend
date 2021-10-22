@@ -1,6 +1,6 @@
 # 😋 EAT - 🥂 DRINK - 🤝 SOCIALIZE APP
 
-This is a simple server template to for my students to start projects quickly.
+This is a simple app where you can search for place to eat & drink and post & read reviews of other users.
 
 ## Table of contents:
 
