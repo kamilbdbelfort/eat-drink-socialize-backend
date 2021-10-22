@@ -1,4 +1,4 @@
-# Server template
+# 😋 EAT - 🥂 DRINK - 🤝 SOCIALIZE APP
 
 This is a simple server template to for my students to start projects quickly.
 
