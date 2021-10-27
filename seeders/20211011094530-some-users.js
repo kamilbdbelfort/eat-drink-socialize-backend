@@ -17,7 +17,7 @@ module.exports = {
           city: "Amsterdam",
           country: "Netherlands",
           image:
-            "https://media-exp1.licdn.com/dms/image/C4E03AQEtUtQ9T6UECw/profile-displayphoto-shrink_800_800/0/1615834281886?e=1639612800&v=beta&t=oi-toiEOpqy3lRkl5TOsSwPRa_ORuWzYPf4Tx8lCPFY",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371287/kamil_xmdhmf.jpg",
           instagram: "https://www.instagram.com/kamil_beelidebelfort/",
           createdAt: new Date(),
           updatedAt: new Date(),

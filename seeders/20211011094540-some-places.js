@@ -17,7 +17,7 @@ module.exports = {
           postcode: "1016TZ",
           country: "Netherlands",
           image:
-            "https://www.adequatetravel.com/blog/wp-content/uploads/2019/12/Bar-Oldenhof.png",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371288/Bar-Oldenhof_ppnrhy.png",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -29,7 +29,7 @@ module.exports = {
           postcode: "1012TE",
           country: "Netherlands",
           image:
-            "https://www.yourlittleblackbook.me/wp-content/uploads/2013/05/IMG_6102.jpg",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371288/tales_spirits_e1q0f1.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -41,7 +41,7 @@ module.exports = {
           postcode: "1012CV",
           country: "Netherlands",
           image:
-            "https://www.entreemagazine.nl/sites/default/files/styles/voorpagina-uitgelicht/public/afbeeldingen/stijl_en_design/Rosalia%20mvv%20Pim%20Ras%20%282%29_1.jpg?itok=3B-67qRc",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371288/Rosalia_mvv_Pim_Ras_2__1_az6npg.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -53,7 +53,7 @@ module.exports = {
           postcode: "1012JS",
           country: "Netherlands",
           image:
-            "https://www.satelliet.net/fileadmin/_processed_/csm_Nieuws_Hotel-TwentySeven_compr_9f544d6ed6.jpg",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371288/twentyseven_cbexcs.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

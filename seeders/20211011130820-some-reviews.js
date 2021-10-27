@@ -14,7 +14,7 @@ module.exports = {
           comment:
             "Great service, atmosphere and drinks. Very classy decor, jazzy music in the background, place to be!",
           image:
-            "https://www.mywanderlustylife.com/wp-content/uploads/2017/05/3-days-in-amsterdam-bar-oldenhof-exterior-.jpg",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371512/3-days-in-amsterdam-bar-oldenhof-exterior-_s1v95t.jpg",
           rating: 5,
           userId: 1,
           placeId: 1,
@@ -26,7 +26,7 @@ module.exports = {
           comment:
             "Very friendly staff with funky & hipster style! Casual, loud and fun place.",
           image:
-            "https://media.iamsterdam.com/ff/api/assets/5ff88a17de7e8633a4aac132/94e5346c-ae52-4373-8398-ca0bfafde548.jpg",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371506/tales-review1_cdsey0.jpg",
           rating: 5,
           userId: 2,
           placeId: 2,
@@ -38,7 +38,7 @@ module.exports = {
           comment:
             "Beautiful bar and interior. Interesting drinks and great location.",
           image:
-            "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/0d46b3a9f11326b46797136696093809.jpg?crop=0.941xw:1.00xh;0.0309xw,0&resize=640:*",
+            "https://res.cloudinary.com/ddng6db9v/image/upload/v1635371512/27-review_wvpora.jpg",
           rating: 5,
           userId: 1,
           placeId: 4,
