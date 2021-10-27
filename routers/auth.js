@@ -74,18 +74,9 @@ router.post("/signup", async (req, res) => {
     delete newUser.dataValues["password"]; // don't send back the password hash
     const token = toJWT({ userId: newUser.id });
 
-    // const space = await Space.create({
-    //   title: `${newUser.name}'s space`,
-    //   userId: newUser.id,
-    // });
-
     res.status(201).json({
       token,
       ...newUser.dataValues,
-      // space: {
-      //   ...space.dataValues,
-      //   stories: [],
-      // },
     });
   } catch (error) {
     if (error.name === "SequelizeUniqueConstraintError") {
