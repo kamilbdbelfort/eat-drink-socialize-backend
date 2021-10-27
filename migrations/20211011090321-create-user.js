@@ -26,19 +26,7 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING,
       },
-      street: {
-        allowNull: true,
-        type: Sequelize.STRING,
-      },
-      number: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-      },
       city: {
-        allowNull: true,
-        type: Sequelize.STRING,
-      },
-      postcode: {
         allowNull: true,
         type: Sequelize.STRING,
       },
