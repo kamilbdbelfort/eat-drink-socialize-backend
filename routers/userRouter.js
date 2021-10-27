@@ -125,7 +125,7 @@ router.post("/user_place/newLike", async (req, res, next) => {
       like,
       saved,
     });
-    res.status(201).send("New place is added to a user's list!");
+    res.status(201).send("New place is added to a user's list!", newUserPlace);
   } catch (e) {
     next(e.message);
   }
@@ -150,7 +150,7 @@ router.post("/user_place/newSaved", async (req, res, next) => {
       like,
       saved,
     });
-    res.status(201).send("New place is added to a user's list!");
+    res.status(201).send("New place is added to a user's list!", newUserPlace);
   } catch (e) {
     next(e.message);
   }

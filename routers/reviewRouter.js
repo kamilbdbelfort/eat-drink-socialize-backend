@@ -11,6 +11,7 @@ const Place = require("../models").place;
 router.get("/", async (req, res, next) => {
   try {
     const reviews = await Review.findAll({
+      order: [["createdAt", "DESC"]],
       include: [User, Place],
     });
     res.status(200).send(reviews);
