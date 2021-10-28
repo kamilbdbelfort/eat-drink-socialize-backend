@@ -65,7 +65,7 @@ router.post("/", async (req, res, next) => {
       placeId,
     });
 
-    res.status(201).send("New review is placed!");
+    res.status(201).send(newReview);
   } catch (e) {
     next(e.message);
   }
